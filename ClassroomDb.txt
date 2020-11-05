@@ -1,0 +1,33 @@
+CREATE DATABASE classroomdb CHARACTER SET utf8 COLLATE utf8_general_ci;
+use classroomdb;
+
+CREATE TABLE IF NOT EXISTS `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `username` varchar(50) NOT NULL UNIQUE,
+ `password` varchar(50) NOT NULL,
+ `fullname` varchar(255) NOT NULL,
+ `birth` DATETIME NOT NULL,
+ `email` varchar(255) NOT NULL,
+ `phone` int NOT NULL,
+ `permission`varchar(255) NOT NULL DEFAULT 'user',
+ PRIMARY KEY (`id`)
+ );
+
+CREATE TABLE IF NOT EXISTS `class` (
+ `id` int NOT NULL AUTO_INCREMENT,   
+ `code` text NOT NULL UNIQUE,
+ `classname` varchar(50) NOT NULL,
+ `description` text NOT NULL,
+ `room` varchar(50) NOT NULL,
+ `image_class` text NOT NULL,
+ `instructor` varchar(255) NOT NULL,
+ `own` varchar(255) NOT NULL,
+ PRIMARY KEY (`id`)
+ );
+
+CREATE TABLE IF NOT EXISTS `reset` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `email` varchar(255) NOT NULL,	
+ `token` varchar(255) NOT NULL,
+ PRIMARY KEY (`id`)
+ );
